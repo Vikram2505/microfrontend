@@ -7,7 +7,8 @@ const MarketingApp = () => {
         mount(ref.current)
     }, [])
     return (
-        <div ref={ref}> </div>
+        <div ref={ref}>
+        </div>
     )
 }
 
