@@ -6,16 +6,16 @@ import App from "./App";
 // In micro frontend routing we have BrowserRouter is used like Browser History, Memory History, Hash History
 // Browser router create Browser History object is inside container which has access of URL object
 // for Memory Route we need to pass history.
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate, initialPath, defaultHistory, onSignIn }) => {
     const history = defaultHistory || createMemoryHistory({
-        initialEntry: [initialPath]
+        initialEntries: [initialPath]
     })
 
     if (onNavigate) {
         history.listen(onNavigate)
     }
 
-    ReactDom.render(<App history={history} />, el)
+    ReactDom.render(<App history={history} onSignIn={onSignIn} />, el)
 
     return {
         onParentNavigate({ pathname: nextPathName }) {
@@ -29,7 +29,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 }
 
 if (process.env.NODE_ENV === 'development') {
-    const devRoot = document.querySelector('#_marketing-dev-root')
+    const devRoot = document.querySelector('#_auth-dev-root')
 
     if (devRoot) {
         mount(devRoot, { defaultHistory: createBrowserHistory() })
