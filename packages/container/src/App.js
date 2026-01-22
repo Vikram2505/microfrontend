@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
 import Progress from './components/Progress';
 const MarketingApp = lazy(() => import('./components/MarketingApp'))
-const Auth = lazy(() => import("./components/AuthApp"))
+const Auth = lazy(() => import('./components/AuthApp'))
 
 const generateClassName = createGenerateClassName({
     productionPrefix: 'CA'
